@@ -1,52 +1,60 @@
-@use '../variable' as *; 
-@use  '../mixins' as *;
+@use "../variable" as *;
+@use "../mixins" as *;
 
-.login {
-  max-width: 400px;
-  margin: 2.5rem auto;
-  background-color: #fff;
-  border-radius: $border-r;
-  padding: 25px;
-  
-    @media (max-width: 640px) {
-       max-width: 320px;
-  }
+.loginContainer {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    h4{
-         text-align: center;
-         font-size: 1.5rem;
-         color:$primary;
-    }
+  .loginform {
+   width: 400px;
 
-    .inputField{
-      @include flexCenter;
-        border:1px solid rgb(197, 195, 195);
-        padding:10px;
+    .login {
+      width: 100%;
+      background-color: #fff;
+      border-radius: $border-r;
+      padding: 25px;
+
+      @media (max-width: 640px) {
+        max-width: 320px;
+      }
+
+      h4 {
+        text-align: center;
+        font-size: 1.5rem;
+        color: $primary;
+      }
+
+      .inputField {
+        @include flexCenter;
+        border: 1px solid rgb(197, 195, 195);
+        padding: 10px;
         border-radius: $border-r;
         margin: 1.5rem 0;
 
-         input{
-            border:none;
-            outline: none;
-            font-size: 0.89rem;
-            width:100%;
-            display: block;
-            // border:2px solid blue;
-        
-         }
+        input {
+          border: none;
+          outline: none;
+          font-size: 0.89rem;
+          width: 100%;
+          display: block;
+          // border:2px solid blue;
+        }
 
+        .icon {
+          font-size: 1.8rem;
+          color: $primary;
+          border: none;
+          background: transparent;
+          vertical-align: middle;
+        }
+      }
 
-         .icon{
-            font-size: 1.8rem;
-            color:$primary;
-            border:none;
-            background: transparent;
-            vertical-align: middle;
-         }
-    }
-
-    .btns{
-        @include btn($width:100%);
+      .btns {
+        @include btn($width: 100%);
         padding: 0.89rem;
+      }
     }
+  }
 }

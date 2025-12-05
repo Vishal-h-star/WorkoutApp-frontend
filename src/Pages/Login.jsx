@@ -23,53 +23,69 @@ const Login = () => {
   };
 
   return (
-    <form action="" className="login" onSubmit={handleSubmit}>
-      <h4>LOGIN</h4>
+    <div className="loginContainer">
+      <div className="loginform">
+        <form action="" className="login" onSubmit={handleSubmit}>
+          <h4>LOGIN</h4>
 
-      <div className="inputField">
-        <input
-          type="text"
-          name="email"
-          value={formValues.email}
-          placeholder="Email"
-          onChange={(e) =>
-            setformValues({ ...formValues, [e.target.name]: e.target.value })
-          }
-        />
+          <div className="inputField">
+            <input
+              type="text"
+              name="email"
+              value={formValues.email}
+              placeholder="Email"
+              onChange={(e) =>
+                setformValues({
+                  ...formValues,
+                  [e.target.name]: e.target.value,
+                })
+              }
+            />
 
-        <button type="button" onClick={() => setEmailStatus((prev) => !prev)}>
-          {formValues.email.length > 0 ? (
-            <MdMarkEmailRead className="icon" />
-          ) : (
-            <MdEmail className="icon" />
-          )}
-        </button>
+            <button
+              type="button"
+              onClick={() => setEmailStatus((prev) => !prev)}
+            >
+              {formValues.email.length > 0 ? (
+                <MdMarkEmailRead className="icon" />
+              ) : (
+                <MdEmail className="icon" />
+              )}
+            </button>
+          </div>
+
+          <div className="inputField">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={formValues.password}
+              placeholder="Password"
+              onChange={(e) =>
+                setformValues({
+                  ...formValues,
+                  [e.target.name]: e.target.value,
+                })
+              }
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? (
+                <IoEye className="icon" />
+              ) : (
+                <IoEyeOff className="icon" />
+              )}
+            </button>
+          </div>
+
+          <button className="btns" disabled={isLoading}>
+            Login
+          </button>
+          {error && <div className="error">{error}</div>}
+        </form>
       </div>
-
-      <div className="inputField">
-        <input
-          type={showPassword ? "text" : "password"}
-          name="password"
-          value={formValues.password}
-          placeholder="Password"
-          onChange={(e) =>
-            setformValues({ ...formValues, [e.target.name]: e.target.value })
-          }
-        />
-        <button type="button" onClick={() => setShowPassword((prev) => !prev)}>
-          {showPassword ? (
-            <IoEye className="icon" />
-          ) : (
-            <IoEyeOff className="icon" />
-          )}
-        </button>
-      </div>
-
-      <button className="btns" disabled={isLoading}>
-        Login
-      </button>
-      {error && <div className="error">{error}</div>}
-    </form>
+    </div>
   );
 };
 
