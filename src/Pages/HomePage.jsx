@@ -1,7 +1,7 @@
 import React, { useEffect, useState  } from "react";
 
 // importing components
-import WorkOutDetails from "../Components/workOutDetails";
+import WorkOutDetails from "../Components/WorkOutDetails";
 import WorkOutForm from "../Components/WorkOutForm";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
