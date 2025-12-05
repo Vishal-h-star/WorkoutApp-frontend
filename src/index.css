@@ -12,7 +12,8 @@ body {
 }
 
 header {
-  background-color: #fff;
+  background-color: blue;
+  color: white
 }
 
 header .container {
