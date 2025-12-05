@@ -6,17 +6,16 @@ const Login = () => {
     email: "",
     password: "",
   };
-
+  const API = import.meta.env.VITE_API_BASE_URL;
+  console.log("Final Login URL:", `${API}/api/user/login`);
   const [formValues, setformValues] = useState(initailvalues);
-  const { login ,isLoading ,error} = useLogin();
+  const { login, isLoading, error } = useLogin();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("values" , formValues)
+    console.log("values", formValues);
     await login(formValues);
   };
-
-  
 
   return (
     <form action="" className="login" onSubmit={handleSubmit}>
@@ -42,8 +41,8 @@ const Login = () => {
         }
       />
 
-      <button  disabled={isLoading}> Log in</button>
-      {error &&  <div className="error">{error}</div>}
+      <button disabled={isLoading}> Log in</button>
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };
