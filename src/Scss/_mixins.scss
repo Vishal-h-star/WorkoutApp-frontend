@@ -24,3 +24,15 @@
     @content;
   }
 }
+
+@mixin modileWidth {
+  @media screen and (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin largeWidth {
+  @media screen and (max-width: 1024px) {
+    @content;
+  }
+}

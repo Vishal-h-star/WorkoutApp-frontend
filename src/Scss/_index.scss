@@ -5,8 +5,13 @@
 
 // componenst 
 @forward './Components/navbar';
+@forward './Components/workoutForm';
+@forward './Components/workoutDetails';
 
 // importing pages
-@forward './Pages/loginPage'
+@forward './Pages/loginPage' ;
+@forward './Pages/signUp';
+@forward './Pages/HomePages'
+
 
 

@@ -1,0 +1,60 @@
+@use "../variable" as *;
+@use "../mixins" as *;
+
+.workoutFormContainer {
+    .homebtn{
+      @include btn;
+      padding:8px 1rem;
+       display: none;
+
+       @include smallWidth{
+        display: block;
+       }
+    }
+  .create {  
+    @include smallWidth{
+       margin: 2rem 1rem;
+    }
+
+    h3 {
+      color: $primary;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      white-space: nowrap;
+    }
+
+    .inputFields {
+      label,
+      input {
+        display: block;
+        width: 100%;
+      }
+      label {
+        margin: 0.25rem 0rem;
+      }
+
+      input {
+        padding: 0.59rem;
+        border-radius: $border-r;
+      }
+
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    .btns {
+      @include btn($width: 100%);
+      margin-top: 1rem;
+      padding: 10px 12px;
+    }
+  }
+  
+  //  @include smallWidth {
+  //      display: none;
+  //  }
+
+}

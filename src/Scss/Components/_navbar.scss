@@ -17,7 +17,32 @@
       display: none;
     }
   }
+
   nav {
+    .userAndLogout {
+
+      span {
+        margin-right: 0.76rem;
+        background-color: rgb(228, 226, 226);
+        padding: 12px;
+        color:$primary;
+        border-radius: $border-r;
+        vertical-align: middle;
+      }
+      .btns {
+        @include btn();
+        padding: 10px 12px;
+        vertical-align: middle;
+        margin-right: 12px;
+      }
+
+        @include smallWidth{
+           width:100%;
+           display: flex;
+           justify-content: space-between;
+        }
+    }
+
     .logInoutDiv {
       position: relative;
 
@@ -31,7 +56,6 @@
           color: $white;
           font-weight: 500;
         }
-
       }
 
       @include smallWidth {
@@ -49,7 +73,7 @@
     }
   }
 
-     @include smallWidth {
-      padding: 15px 10px;
-    }
+  @include smallWidth {
+    padding: 15px 10px;
+  }
 }

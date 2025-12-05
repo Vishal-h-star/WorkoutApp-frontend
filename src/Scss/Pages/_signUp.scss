@@ -1,16 +1,20 @@
 @use "../variable" as *;
 @use "../mixins" as *;
 
-.loginContainer {
+
+@use "../variable" as *;
+@use "../mixins" as *;
+
+.signUpContainer{
     height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
 
-  .loginform {
+  .signUpform{
    width: 400px;
 
-    .login {
+    .signup{
       width: 100%;
       background-color: #fff;
       border-radius: $border-r;
@@ -20,6 +24,7 @@
         text-align: center;
         font-size: 1.5rem;
         color: $primary;
+        text-transform: uppercase;
       }
 
       .inputField {

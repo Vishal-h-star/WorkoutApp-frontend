@@ -1,0 +1,39 @@
+@use "../variable" as *;
+@use "../mixins" as *;
+
+.homeContainer {
+
+  #addworkout {
+    padding: 10px 12px;
+    background-color: $primary;
+    color: $white;
+    border-radius: $border-r;
+    display: none;
+
+    @include smallWidth {
+      display: block;
+    }
+  }
+
+  .WorkoutData {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 5rem;
+
+    @include largeWidth {
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+
+     @include smallWidth {
+      grid-template-columns:1fr;
+    }
+
+    .workoutFormDiv{
+         @include smallWidth {
+         display: none;
+    }
+
+    }
+  }
+}

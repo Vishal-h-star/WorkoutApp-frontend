@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { Link } from "react-router-dom";
 
 const WorkOutForm = () => {
   const initialvalues = {
@@ -16,7 +17,7 @@ const WorkOutForm = () => {
 
   //   to store data in my workout context
   const { dispatch } = useWorkoutContext();
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
 
   const handleChnage = (e) => {
     const { name, value } = e.target;
@@ -26,23 +27,23 @@ const WorkOutForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if(!user){
-        setErrors("user must be Logged in!")
-        return;
+    if (!user) {
+      setErrors("user must be Logged in!");
+      return;
     }
 
     const response = await fetch(`${API}/api/workouts/`, {
       method: "POST",
       headers: {
         "content-Type": "application/json",
-        "Authorization" : `Bearer ${user.token}`
+        Authorization: `Bearer ${user.token}`,
       },
       body: JSON.stringify({
         data: formvalues,
       }),
     });
 
-    console.log( "res",response)
+    console.log("res", response);
 
     const json = await response.json();
 
@@ -58,41 +59,55 @@ const WorkOutForm = () => {
   };
 
   return (
-    <form className="create" onSubmit={handleSubmit} action="">
-      <h3>Add a new Workout </h3>
+    <div className="workoutFormContainer">
+      <button className="homebtn"><Link to="/">Home</Link></button>
+      <form className="create" onSubmit={handleSubmit} action="">
+        <h3>Add a new Workout </h3>
 
-      {errorField.title && <div className="fielderror">{errorField.title}</div>}
-      <label htmlFor="title"> Exercise Title: </label>
-      <input
-        id="title"
-        type="text"
-        name="title"
-        value={formvalues.title}
-        onChange={handleChnage}
-      />
+        {errorField.title && (
+          <div className="fielderror">{errorField.title}</div>
+        )}
 
-      {errorField.load && <div className="fielderror">{errorField.load}</div>}
-      <label htmlFor="load"> Load (in kg's): </label>
-      <input
-        id="load"
-        type="text"
-        name="load"
-        value={formvalues.load}
-        onChange={handleChnage}
-      />
-      {errorField.reps && <div className="fielderror">{errorField.reps}</div>}
-      <label htmlFor="reps"> Reps: </label>
-      <input
-        id="reps"
-        type="text"
-        name="reps"
-        value={formvalues.reps}
-        onChange={handleChnage}
-      />
+        <div className="inputFields">
+          <label htmlFor="title"> Exercise Title: </label>
+          <input
+            id="title"
+            type="text"
+            name="title"
+            value={formvalues.title}
+            onChange={handleChnage}
+          />
+        </div>
 
-      <button>Add Workout</button>
-      {errors && <div className="error">{errors}</div>}
-    </form>
+        {errorField.load && <div className="fielderror">{errorField.load}</div>}
+        <div className="inputFields">
+          <label htmlFor="load"> Load (in kg's): </label>
+          <input
+            id="load"
+            type="number"
+            name="load"
+            value={formvalues.load}
+            onChange={handleChnage}
+          />
+        </div>
+
+        {errorField.reps && <div className="fielderror">{errorField.reps}</div>}
+
+        <div className="inputFields">
+          <label htmlFor="reps"> Reps: </label>
+          <input
+            id="reps"
+            type="number"
+            name="reps"
+            value={formvalues.reps}
+            onChange={handleChnage}
+          />
+        </div>
+
+        <button className="btns">Add Workout</button>
+        {errors && <div className="error">{errors}</div>}
+      </form>
+    </div>
   );
 };
 
