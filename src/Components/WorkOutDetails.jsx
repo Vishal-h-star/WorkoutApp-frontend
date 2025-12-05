@@ -55,7 +55,7 @@ const WorkOutDetails = ({ workout }) => {
           <button type="button" className="btn" onClick={handleClick}>
             <MdDeleteOutline className="icon" />
           </button>
-            <button type="button" className="btn" onClick={handleClick}>
+            <button type="button" className="btn">
             <FaCheck className="icon" />
           </button>
         </div>
