@@ -10,7 +10,7 @@ export const useLogin = () => {
     setError(null);
     setisLoading(true);
 
-    const response = await fetch("/api/user/login", {
+    const response = await fetch("https://wokoutapp-backend.onrender.com/api/user/login", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ email , password }),

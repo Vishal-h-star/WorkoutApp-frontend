@@ -30,7 +30,7 @@ const WorkOutForm = () => {
         return;
     }
 
-    const response = await fetch("/api/workouts/", {
+    const response = await fetch("https://wokoutapp-backend.onrender.com/api/workouts/", {
       method: "POST",
       headers: {
         "content-Type": "application/json",
