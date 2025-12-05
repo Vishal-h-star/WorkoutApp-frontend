@@ -1,0 +1,12 @@
+@forward './resets';
+@forward './variable';
+@forward './mixins' ;
+
+
+// componenst 
+@forward './Components/navbar';
+
+// importing pages
+@forward './Pages/loginPage'
+
+

@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <header>
-      <div className="container">
+      <div className="headerContainer">
         <Link to="/">
           <h1>Workout buddy</h1>
         </Link>
@@ -25,10 +25,15 @@ const Navbar = () => {
             </div>
           )}
           {!user && (
-            <div>
-              <Link to="/login">Login</Link>
+            <div className="logInoutDiv">
+              
+              <button className="btns">
+                <Link to="/login">Login</Link>
+              </button>
 
-              <Link to="/signup">Signup</Link>
+              <button className="btns">
+                <Link to="/signup">Signup</Link>
+              </button>
             </div>
           )}
         </nav>

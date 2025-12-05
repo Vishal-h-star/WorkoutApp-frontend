@@ -1,0 +1,26 @@
+@use "./variable" as *;
+
+@mixin btn($width: null) {
+  @if ($width) {
+    width: $width;
+  }
+  background-color: $primary;
+  outline: none;
+  border: none;
+  color: $white;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: $border-r;
+}
+
+@mixin flexCenter() {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@mixin smallWidth {
+  @media screen and (max-width: 640px) {
+    @content;
+  }
+}
