@@ -5,12 +5,13 @@ export const useSignup = () =>{
      const [error, setError] = useState(null) 
      const [isLoading, setisLoading] = useState(null)
       const {dispatch} = useAuthContext();
+      const API = import.meta.env.VITE_API_BASE_URL;
 
      const signup =  async ({email ,password}) =>{
            setError(null)
            setisLoading(true);
 
-           const response  = await fetch('https://wokoutapp-backend.onrender.com/api/user/signup' , {
+           const response  = await fetch(`${API}/api/user/signup` , {
               method: 'POST',
               headers: {'content-type' : "application/json"},
               body : JSON.stringify({email, password}) 

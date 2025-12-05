@@ -9,12 +9,15 @@ const WorkOutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutContext();
   const  {user} = useAuthContext();
 
+  const API = import.meta.env.VITE_API_BASE_URL;
+
   const handleClick = async () => {
      if(!user){
       return
      }
 
-    const responce = await fetch("https://wokoutapp-backend.onrender.com/api/workouts/" + workout._id, {
+
+    const responce = await fetch( `${API}/api/workouts/` + workout._id, {
       method: "DELETE",
       headers : {"Authorization": `Bearer ${user.token}`}
     });

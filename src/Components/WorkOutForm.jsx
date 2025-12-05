@@ -11,6 +11,7 @@ const WorkOutForm = () => {
   const [formvalues, setformvalues] = useState(initialvalues);
   const [errors, setErrors] = useState(null);
   const [errorField, setErrorField] = useState({});
+  const API = import.meta.env.VITE_API_BASE_URL;
   // console.log(errorField)
 
   //   to store data in my workout context
@@ -30,7 +31,7 @@ const WorkOutForm = () => {
         return;
     }
 
-    const response = await fetch("https://wokoutapp-backend.onrender.com/api/workouts/", {
+    const response = await fetch(`${API}/api/workouts/`, {
       method: "POST",
       headers: {
         "content-Type": "application/json",

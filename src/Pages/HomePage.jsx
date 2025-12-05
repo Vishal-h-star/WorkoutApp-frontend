@@ -12,10 +12,11 @@ const HomePage = () => {
   // bu useWorkoutContext
   const { workouts, dispatch } = useWorkoutContext();
   const   {user} =  useAuthContext()
+   const API = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("https://wokoutapp-backend.onrender.com/api/workouts/" , {
+      const response = await fetch(`${API}/api/workouts/`, {
           headers : { 'Authorization' : `Bearer ${user.token}`}
       });
       const json = await response.json();
