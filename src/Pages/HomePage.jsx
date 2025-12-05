@@ -38,7 +38,7 @@ const HomePage = () => {
   }, [dispatch, user]);
 
   return (
-    <div className="homeContainer">
+    <div className="homeContainer" id="main">
        <button id="addworkout"><Link to="/workoutForm">Add Workout</Link></button>
       <div className="WorkoutData">
         <div className="workouts">

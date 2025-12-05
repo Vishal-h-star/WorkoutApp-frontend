@@ -2,18 +2,22 @@
 @use "../mixins" as *;
 
 .workoutFormContainer {
-    .homebtn{
-      @include btn;
-      padding:8px 1rem;
-       display: none;
+  @include smallWidth {
+     margin-top: 5rem;
+  }
 
-       @include smallWidth{
-        display: block;
-       }
+  .homebtn {
+    @include btn;
+    padding: 8px 1rem;
+    display: none;
+
+    @include smallWidth {
+      display: block;
     }
-  .create {  
-    @include smallWidth{
-       margin: 2rem 1rem;
+  }
+  .create {
+    @include smallWidth {
+      margin: 2rem 1rem;
     }
 
     h3 {
@@ -51,10 +55,18 @@
       margin-top: 1rem;
       padding: 10px 12px;
     }
+
+    .success-msg {
+      margin-top: 0.25rem;
+      color: green;
+      background: #d9ffd9;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
   }
-  
+
   //  @include smallWidth {
   //      display: none;
   //  }
-
 }

@@ -12,6 +12,7 @@ const WorkOutForm = () => {
   const [formvalues, setformvalues] = useState(initialvalues);
   const [errors, setErrors] = useState(null);
   const [errorField, setErrorField] = useState({});
+  const [success, setSuccess] = useState(null)
   const API = import.meta.env.VITE_API_BASE_URL;
   // console.log(errorField)
 
@@ -55,6 +56,9 @@ const WorkOutForm = () => {
       setformvalues(initialvalues);
       console.log(" New workout updated ", json);
       dispatch({ type: "CREATE_WORKOUT", payload: json.data });
+       setSuccess("New Workout Created")
+       setTimeout(() => setSuccess(null), 3000);
+
     }
   };
 
@@ -105,6 +109,7 @@ const WorkOutForm = () => {
         </div>
 
         <button className="btns">Add Workout</button>
+        {success && <div className="success-msg">{success}</div>}
         {errors && <div className="error">{errors}</div>}
       </form>
     </div>
