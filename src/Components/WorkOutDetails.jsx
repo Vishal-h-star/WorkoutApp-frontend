@@ -3,6 +3,7 @@ import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
+import Paginationcomp from "./Paginationcomp";
 
 // Datat fns
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
@@ -81,7 +82,7 @@ const WorkOutDetails = ({ workout }) => {
           </p>
 
           <p>
-            {formatDistanceToNow(new Date(workout.createdAt), {
+            {formatDistanceToNow(new Date(workout.updatedAt), {
               addSuffix: true,
             })}
           </p>

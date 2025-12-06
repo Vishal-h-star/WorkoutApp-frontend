@@ -6,6 +6,7 @@ import WorkOutDetails from "../Components/WorkOutDetails";
 import WorkOutForm from "../Components/WorkOutForm";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import Paginationcomp from "../Components/Paginationcomp";
 
 
 const HomePage = () => {
@@ -15,6 +16,7 @@ const HomePage = () => {
   // bu useWorkoutContext
   const { workouts, dispatch } = useWorkoutContext();
   const { user } = useAuthContext();
+  const [page, setpage] = useState(1)
   const API = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
@@ -37,19 +39,36 @@ const HomePage = () => {
     }
   }, [dispatch, user]);
 
+  // pagination logics 
+      const rowsPerPage = 3
+      const start = (page - 1) * rowsPerPage
+      const end = start + rowsPerPage;
+      const visibleData =  workouts ? workouts.slice(start ,end) :[]; 
+      const pagesCount =  workouts ? Math.ceil( workouts.length / rowsPerPage) : 1;
+
+   const setPageFunc = (event, value) =>{
+      setpage(value)   
+   }
+   console.log(page)
+      // console.log(workouts)
+      // console.log("data toshow" , visibleData)
   return (
     <div className="homeContainer" id="main">
        <button id="addworkout"><Link to="/workoutForm">Add Workout</Link></button>
       <div className="WorkoutData">
         <div className="workouts">
-          {workouts &&
+          {/* {workouts &&
             workouts.map((workout) => (
               <WorkOutDetails key={workout._id} workout={workout} />
-            ))}
+            ))} */}
+           {visibleData.map( (workout) => (
+              <WorkOutDetails key={workout._id} workout={workout} />
+           ))  }
         </div>
          <div className="workoutFormDiv"> 
            <WorkOutForm />
          </div>
+            <Paginationcomp count={pagesCount} func ={setPageFunc}/>
       </div>
     </div>
   );
