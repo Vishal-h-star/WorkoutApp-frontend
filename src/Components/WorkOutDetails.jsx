@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { MdDeleteOutline } from "react-icons/md";
@@ -10,6 +10,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 const WorkOutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutContext();
   const { user } = useAuthContext();
+  const [completeStatus, setCompleteStatus] = useState(false);
 
   const API = import.meta.env.VITE_API_BASE_URL;
 
@@ -20,13 +21,43 @@ const WorkOutDetails = ({ workout }) => {
 
     const responce = await fetch(`${API}/api/workouts/` + workout._id, {
       method: "DELETE",
-      headers: { Authorization: `Bearer ${user.token}` },
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
     });
 
     const json = await responce.json();
 
     if (responce.ok) {
       dispatch({ type: "DELETE_WORKOUT", payload: json.data });
+    }
+  };
+
+  const updateStatus = async () => {
+    if (!user) {
+      return;
+    }
+
+    const responce = await fetch(`${API}/api/workouts/${workout._id}/status`, {
+      method: "PATCH",
+      headers: {
+        "content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+      body: JSON.stringify({
+        data: {
+          status: "complete",
+        },
+      }),
+    });
+
+    const data = await responce.json();
+    console.log(data);
+    if (!responce.ok) {
+      alert("something went wrong");
+    } else {
+      alert("workut completed Succesfully");
+      dispatch({ type: "UPDATED_WORKOUT" , payload:data.workout});
     }
   };
 
@@ -45,6 +76,11 @@ const WorkOutDetails = ({ workout }) => {
           </p>
 
           <p>
+            <strong>Status : &nbsp;</strong>
+            {workout.status}
+          </p>
+
+          <p>
             {formatDistanceToNow(new Date(workout.createdAt), {
               addSuffix: true,
             })}
@@ -55,14 +91,19 @@ const WorkOutDetails = ({ workout }) => {
           <button type="button" className="btn" onClick={handleClick}>
             <MdDeleteOutline className="icon" />
           </button>
-            <button type="button" className="btn">
-            <FaCheck className="icon" />
-          </button>
+
+          {workout.status === "pending" ? (
+            <button type="button" className="btn" onClick={updateStatus}>
+              <FaCheck className="icon" />
+            </button>
+          ) : (
+         ""
+          )}
         </div>
+      
         {/* <span className="material-symbols-outlined btn" onClick={handleClick}>
          delete
       </span> */}
-    
       </div>
     </>
   );

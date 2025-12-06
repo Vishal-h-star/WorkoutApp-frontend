@@ -2,6 +2,9 @@ import { createContext, useReducer } from "react";
 
 export const WorkoutsContext = createContext();
 
+
+
+
 export const workoutreducer = (state, action) => {
   switch (action.type) {
     case "SET_WORKOUTS":
@@ -14,9 +17,16 @@ export const workoutreducer = (state, action) => {
       };
     case "DELETE_WORKOUT":
       return {
-           workouts:  state.workouts.filter( (each) => each._id !== action.payload._id)
-      }
-
+        workouts: state.workouts.filter(
+          (each) => each._id !== action.payload._id
+        ),
+      };
+        case "UPDATED_WORKOUT":
+      return {
+        workouts:[...state.workouts.filter( (workout) => (
+               workout._id !== action.payload._id   
+        )) , action.payload]
+      };
     default:
       return state;
   }
@@ -27,9 +37,9 @@ export const WorkoutsContextProvider = ({ children }) => {
     workouts: null,
   });
   // console.log(state,"my state")
-  
+
   return (
-    <WorkoutsContext.Provider value={{...state , dispatch}}>
+    <WorkoutsContext.Provider value={{ ...state, dispatch }}>
       {children}
     </WorkoutsContext.Provider>
   );
