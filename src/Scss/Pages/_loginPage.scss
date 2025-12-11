@@ -58,7 +58,7 @@
       justify-content: center;
       margin-top: 2rem;
       .btns {
-        @include btn($width: 80%);
+        @include btn($width: 100%);
 
         padding: 0.89rem;
       }
