@@ -9,17 +9,27 @@ const Login = () => {
     password: "",
   };
 
+  const demoinitailvalues = {
+    email: "demo@fitnessbuddy.com",
+    password: "Demo@200121",
+  };
+
   //  All values and state
   const [formValues, setformValues] = useState(initailvalues);
   const { login, isLoading, error } = useLogin();
   const [showPassword, setShowPassword] = useState(false);
   const [emailStatus, setEmailStatus] = useState(false);
-  console.log(emailStatus);
+  const [demoData, setDemoData] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("values", formValues);
     await login(formValues);
+  };
+
+  const demoSubmit = async () => {
+    console.log("value", demoinitailvalues);
+    await login(demoinitailvalues);
   };
 
   return (
@@ -84,6 +94,12 @@ const Login = () => {
           </button>
           {error && <div className="error">{error}</div>}
         </form>
+
+        <div className="demoButton">
+          <button className="btns"  disabled={isLoading} onClick={demoSubmit}>
+            Demo Login
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -2,13 +2,14 @@
 @use "../mixins" as *;
 
 .loginContainer {
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 3.5rem;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   .loginform {
-   width: 400px;
+    width: 400px;
 
     .login {
       width: 100%;
@@ -33,7 +34,7 @@
           font-size: 0.89rem;
           width: 100%;
           display: block;
-          border:none
+          border: none;
           // border:2px solid blue;
         }
 
@@ -52,8 +53,19 @@
       }
     }
 
-      @media (max-width: 640px) {
-        max-width: 320px;
+    .demoButton {
+      @include flexCenter;
+      justify-content: center;
+      margin-top: 2rem;
+      .btns {
+        @include btn($width: 80%);
+
+        padding: 0.89rem;
       }
+    }
+
+    @media (max-width: 640px) {
+      max-width: 320px;
+    }
   }
 }
