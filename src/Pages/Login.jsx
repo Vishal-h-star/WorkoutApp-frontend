@@ -4,6 +4,7 @@ import { MdEmail, MdMarkEmailRead } from "react-icons/md";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 
 const Login = () => {
+
   const initailvalues = {
     email: "",
     password: "",
@@ -19,7 +20,6 @@ const Login = () => {
   const { login, isLoading, error } = useLogin();
   const [showPassword, setShowPassword] = useState(false);
   const [emailStatus, setEmailStatus] = useState(false);
-  const [demoData, setDemoData] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,19 +27,14 @@ const Login = () => {
     await login(formValues);
   };
 
-  // const demoSubmit = async () => {
-  //   console.log("value", demoinitailvalues);
-  //   await login(demoinitailvalues);
-  // };
 
 
   const demoSubmit = () => {
-    
+
   setformValues(demoinitailvalues);
-  setDemoData(true);
   setTimeout(() => {
     document.querySelector('form.login .btns[type="submit"]').click();
-  }, 100);
+  }, 500);
 };
 
 
