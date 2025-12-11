@@ -27,10 +27,21 @@ const Login = () => {
     await login(formValues);
   };
 
-  const demoSubmit = async () => {
-    console.log("value", demoinitailvalues);
-    await login(demoinitailvalues);
-  };
+  // const demoSubmit = async () => {
+  //   console.log("value", demoinitailvalues);
+  //   await login(demoinitailvalues);
+  // };
+
+
+  const demoSubmit = () => {
+    
+  setformValues(demoinitailvalues);
+  setDemoData(true);
+  setTimeout(() => {
+    document.querySelector('form.login .btns[type="submit"]').click();
+  }, 100);
+};
+
 
   return (
     <div className="loginContainer">
@@ -89,7 +100,7 @@ const Login = () => {
             </button>
           </div>
 
-          <button className="btns" disabled={isLoading}>
+          <button className="btns" disabled={isLoading} type="submit">
             Login
           </button>
           {error && <div className="error">{error}</div>}
