@@ -30,11 +30,7 @@ const Login = () => {
 
 
   const demoSubmit = () => {
-
   setformValues(demoinitailvalues);
-  setTimeout(() => {
-    document.querySelector('form.login .btns[type="submit"]').click();
-  }, 500);
 };
 
 
